@@ -19,11 +19,10 @@ function MealsOverviewScreen({ route, navigation }) {
         });
     }, [catId, navigation]);
 
-
-
     function renderMealItem(itemData) {
         return (
             <MealItem
+                id={itemData.item.id}
                 title={itemData.item.title}
                 imageUrl={itemData.item.imageUrl}
                 affordability={itemData.item.affordability}
