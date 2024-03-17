@@ -13,11 +13,11 @@ function MealItem({ title, imageUrl, affordability, complexity, duration }) {
                         <Text style={styles.title}>{title}</Text>
                     </View>
                     <View style={styles.tagsContainer}>
-                        <View>
-                            <Text style={styles.tags}>{affordability.toUpperCase()}</Text>
-                        </View>
+                        <Text style={styles.tags}>{affordability.toUpperCase()}</Text>
                         <Text style={styles.tags}>{complexity.toUpperCase()}</Text>
-                        <Text style={styles.tags}>{duration} min</Text>
+                        <View style={styles.durationContainer}>
+                            <Text style={styles.tags}>{duration} min</Text>
+                        </View>
                     </View>
                 </View>
             </Pressable>
@@ -66,5 +66,10 @@ const styles = StyleSheet.create({
     },
     buttonPressed: {
         opacity: 0.5
+    },
+    durationContainer: {
+        borderWidth: 1,
+        borderRadius: 15,
+        padding: 4
     }
 })
