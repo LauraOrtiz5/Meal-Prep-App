@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet } from 'react-native';
 
-function MealDetails({ duration, complexity, affordability }) {
+function MealDetails({ duration, complexity, affordability, style, textStyle }) {
     return (
-        <View style={styles.tagsContainer}>
-            <Text style={styles.tags}>{affordability.toUpperCase()}</Text>
-            <Text style={styles.tags}>{complexity.toUpperCase()}</Text>
-            <Text style={styles.tags}>{duration}min</Text>
+        <View style={[styles.tagsContainer, style]}>
+            <Text style={[styles.tags, textStyle]}>{affordability.toUpperCase()}</Text>
+            <Text style={[styles.tags, textStyle]}>{complexity.toUpperCase()}</Text>
+            <Text style={[styles.tags, textStyle]}>{duration}min</Text>
         </View>
     );
 }
@@ -15,8 +15,9 @@ export default MealDetails;
 const styles = StyleSheet.create({
     tagsContainer: {
         flexDirection: 'row',
-        flex: 1,
-        padding: 8
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 6
     },
     tags: {
         flex: 1,
