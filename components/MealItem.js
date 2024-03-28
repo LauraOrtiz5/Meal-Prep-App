@@ -1,13 +1,14 @@
 import { View, Text, Pressable, Image, StyleSheet, Platform } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
+import MealDetails from "./MealDetails";
 
 function MealItem({ id, title, imageUrl, affordability, complexity, duration }) {
     const navigation = useNavigation();
 
     function selectMealItemHandler() {
         navigation.navigate('MealsDetails', {
-            mealId : id
+            mealId: id
         });
     }
 
@@ -23,13 +24,7 @@ function MealItem({ id, title, imageUrl, affordability, complexity, duration }) 
                         <Image source={{ uri: imageUrl }} style={styles.image} />
                         <Text style={styles.title}>{title}</Text>
                     </View>
-                    <View style={styles.tagsContainer}>
-                        <Text style={styles.tags}>{affordability.toUpperCase()}</Text>
-                        <Text style={styles.tags}>{complexity.toUpperCase()}</Text>
-                        <View style={styles.durationContainer}>
-                            <Text style={styles.tags}>{duration} min</Text>
-                        </View>
-                    </View>
+                    <MealDetails duration={duration} affordability={affordability} complexity={complexity} />
                 </View>
             </Pressable>
         </View>
@@ -64,23 +59,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         padding: 8
     },
-    tagsContainer: {
-        flexDirection: 'row',
-        flex: 1,
-        padding: 8
-    },
-    tags: {
-        flex: 1,
-        textAlign: 'center',
-        fontWeight: 'bold',
-        padding: 4
-    },
     buttonPressed: {
         opacity: 0.5
-    },
-    durationContainer: {
-        borderWidth: 1,
-        borderRadius: 15,
-        padding: 4
     }
 })
